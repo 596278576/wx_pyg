@@ -1,69 +1,116 @@
 // pages/goods_list/index.js
+import request from '../../request/index.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    query:''
+    query: '',
+    tab: ['综合', '销量', '价格'],
+    list: [],
+    yema: 1,
+    jieliu: true,
+    fangdou: true,
+    suoyin:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     // console.log(options)
     this.setData({
-      query:options.query
+      query: options.query
+    })
+    this.getList()
+  },
+  //请求数据
+  getList() {
+    if (!this.data.jieliu) return
+    request({
+      url: '/goods/search',
+      data: {
+        query: this.data.query,
+        pagenum: this.data.yema,
+        pagesize: 10
+      }
+    }).then(res => {
+      // console.log(res)
+      let newdata = res.data.message.goods.map(v => {
+        v.goods_price = Number(v.goods_price).toFixed(2)
+        return v
+      })
+      this.setData({
+        list: [...this.data.list, ...newdata],
+        fangdou: false
+      })
+      if (this.data.list.length >= res.data.message.total) {
+        this.setData({
+          jieliu: false
+        })
+      }
     })
   },
 
+  handelTab(e){
+    this.setData({
+      suoyin: e.target.dataset.index
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
+    if (this.data.fangdou===false) {
+      this.setData({
+        yema: this.data.yema + 1,
+        fangdou:true
+      })
+      this.getList()
+    }
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

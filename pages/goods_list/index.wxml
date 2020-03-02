@@ -1,3 +1,21 @@
 <view class="search">
   <text open-type="navigate"> {{query}} </text>
+  <view class="tab">
+    <view wx:for="{{tab}}" class="{{suoyin==index?'active':''}}" wx:key='index' bindtap="handelTab" data-index='{{index}}'>
+      {{item}}
+      <text wx:if='{{index===2}}' class="iconfont icon-shangxia"></text>
+    </view>
+  </view>
+
+  <view class="list">
+    <view class="list-box" wx:for='{{list}}' wx:key='index'>
+      <view class="list-left">
+        <image src="{{item.goods_small_logo}}"></image>
+      </view>
+      <view class="list-right">
+        <view class="title">{{item.goods_name}}</view>
+        <view class="price">￥{{item.goods_price}}</view>
+      </view>
+    </view>
+  </view>
 </view>

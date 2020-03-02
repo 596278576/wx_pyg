@@ -1,10 +1,12 @@
 /* components/search/search.wxss */
+
 .search {
   padding: 5px;
   background: var(--themeColor);
   height: 90rpx;
 }
-.search text {
+
+.search>text {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,4 +14,56 @@
   height: 100%;
   background: #fff;
   border-radius: 5px;
+}
+
+.tab {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 72rpx;
+}
+.tab view{
+  height: 72rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.list-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list .list-left {
+  width: 300rpx;
+  padding: 0 45rpx;
+}
+
+.list .list-left image {
+  width: 210rpx;
+  height: 210rpx;
+}
+
+.list .list-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40rpx 0;
+}
+
+.list-right .title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.list-right .price{
+  color: #eb4450;
+  font-size: 32rpx;
+}
+.active{
+  color: #eb4450 !important;
+  border-bottom: 2px solid #eb4450 !important;
 }
