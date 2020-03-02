@@ -1,0 +1,39 @@
+<view class="index">
+
+  <SearchInput></SearchInput>
+
+  <swiper class="swiper" indicator-dots indicator-active-color='#2596db' autoplay interval='3000' circular='true'>
+    <swiper-item wx:for='{{banner}}' wx:key='index'>
+      <navigator>
+        <image class="" src="{{item.image_src}}" mode="widthFix">
+        </image>
+        <!-- <text>{{item.url}}{{request.defaults.baseURL}}</text> -->
+      </navigator>
+    </swiper-item>
+  </swiper>
+
+  <view class="menus">
+    <navigator wx:for='{{menus}}' wx:key='index' url="{{item.url}}" open-type="{{item.open_type}}">
+      <image src="{{item.image_src}}"></image>
+    </navigator>
+  </view>
+
+  <view class="floor" wx:for='{{floor}}' wx:key='index'>
+    <view class="floor-top">
+      <image src="{{item.floor_title.image_src}}"></image>
+    </view>
+    <view class="floor-container">
+      <view class="floor-left">
+        <image src="{{item.product_list[0].image_src}}"></image>
+      </view>
+      <view class="floor-right">
+        <image wx:for='{{item.product_list}}' wx:key='index' wx:if="{{index > 0}}" src="{{item.image_src}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="toTop" bindtap="toTop">
+    <view class="iconfont icon-xiangshangjiantou"></view>
+    <text>顶部</text>
+  </view>
+</view>

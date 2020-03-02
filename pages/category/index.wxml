@@ -1,0 +1,24 @@
+<view class='category'>
+  <SearchInput/>
+  <view class="container">
+    <view class="left">
+      <view class="title {{suoyin==index?'active':''}}" wx:for='{{list}}' wx:key='index' bindtap="handelClick" data-index="{{index}}">{{item.cat_name}} </view>
+
+    </view>
+    <view class="right">
+      <view class="list" wx:for='{{list[suoyin].children}}' wx:key='index'>
+        <view class="title">
+          /
+          <text class="cat_name">{{item.cat_name}}</text>/
+        </view>
+        <view class="main">
+          <navigator url="/pages/goods_list/index?query={{subItem.cat_name}}" class="box" wx:for='{{item.children}}' wx:for-item="subItem" wx:for-index="subIndex" wx:key='subIndex'>
+            <image lazy-load='true' src="{{subItem.cat_icon}}"></image>
+            <view>{{subItem.cat_name}}</view>
+          </navigator>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

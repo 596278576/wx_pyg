@@ -1,0 +1,78 @@
+/* pages/category/index.wxss */
+.container{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 90rpx;
+  bottom: 0;
+
+}
+.container>.left{
+  width: 200rpx;
+  background: #eee;
+  height: 100%;
+  overflow: auto;
+  flex-shrink: 0;
+}
+.container>.left::-webkit-scrollbar{
+    display:none
+}
+.container>.left>.title{
+  height: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.active{
+  background: #fff;
+  position: relative;
+  color: red;
+}
+.active::before{
+  display: block;
+  content: '';
+  height: 18px;
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 2px;
+  background: red;
+}
+.container>.right{
+  /* height: 100%; */
+  overflow: auto;
+}
+.container>.right::-webkit-scrollbar{
+    display:none
+}
+.right .title{
+  font-size: 12px;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.right .main{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  align-items: center;
+}
+.right .main .box{
+  margin-top: 60rpx;
+  text-align: center;
+  width: 33.33%;
+}
+.right .main .box image{
+  width: 120rpx;
+  height: 120rpx;
+}
+.cat_name{
+  margin: 0rpx 30rpx;
+  font-size: 16px;
+  color: black;
+}
+.main{
+  margin-bottom: 90rpx;
+}
