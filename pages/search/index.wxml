@@ -1,2 +1,26 @@
-<!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+<view class='search'>
+  <view class="searchBox">
+    <view class="input">
+      <icon  type="search" size="20"></icon>
+      <input bindinput='handelInput' bindconfirm='handelEnter' value='{{value}}' placeholder="请输入内容"></input>
+    </view>
+    <view class="btn" wx:if='{{value}}' bindtap='handelClear'>取消</view>
+  </view>
+
+  <view class="list" wx:if='{{list.length}}'>
+    <navigator wx:for='{{list}}' wx:key='index'>
+      {{item.goods_name}}
+    </navigator>
+  </view>
+
+  <view class="title">
+    <text>历史搜索</text>
+    <icon  type="clear" size="20"></icon>
+  </view>
+
+  <view class="history">
+    <navigator url="/pages/goods_list/index?query={{item}}"  wx:for='{{history}}' wx:key='index'>
+      {{item}}
+    </navigator>
+  </view>
+</view>

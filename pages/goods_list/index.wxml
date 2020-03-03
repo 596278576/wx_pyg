@@ -1,5 +1,8 @@
 <view class="search">
-  <text open-type="navigate"> {{query}} </text>
+  <navigator url='/pages/search/index'>
+    <text open-type="navigate"> {{query}} </text>
+
+  </navigator>
   <view class="tab">
     <view wx:for="{{tab}}" class="{{suoyin==index?'active':''}}" wx:key='index' bindtap="handelTab" data-index='{{index}}'>
       {{item}}

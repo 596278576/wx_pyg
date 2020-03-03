@@ -6,7 +6,7 @@
   height: 90rpx;
 }
 
-.search>text {
+.search>navigator {
   display: flex;
   justify-content: center;
   align-items: center;

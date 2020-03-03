@@ -1,3 +1,5 @@
+import request from '../../request/index.js'
+
 // pages/search/index.js
 Page({
 
@@ -5,62 +7,69 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    value: '',
+    list: [],
+    islodin: true,
+    lastValue: '',
+    history: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    let arr = wx.getStorageSync('history')
+    if (!Array.isArray(arr)) {
+      arr = []
+    }
+    this.setData({
+      history: arr
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  handelInput(e) {
+    // console.log(e.detail.value)
+    this.setData({
+      value: e.detail.value
+    })
+    this.getList()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getList() {
+    if (this.data.islodin === true) {
+      this.setData({
+        islodin: false,
+        lastValue: this.data.value
+      })
+      request({
+        url: '/goods/qsearch',
+        data: {
+          query: this.data.value
+        }
+      }).then(res => {
+        // console.log(res)
+        this.setData({
+          list: res.data.message,
+          islodin: true
+        })
+        if (this.data.value !== this.data.lastValue) {
+          this.getList()
+        }
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  handelClear() {
+    this.setData({
+      value: '',
+      list: []
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  handelEnter() {
+    let arr = this.data.history
+    arr.unshift(this.data.value)
+    arr=[...new Set(arr)]
+    wx.setStorageSync('history', arr)
+    wx.redirectTo({
+      url: '/pages/goods_list/index?query=' + this.data.value
+    })
   }
 })

@@ -76,6 +76,13 @@
 					"pathName": "pages/goods_list/index",
 					"query": "query=曲面电视",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
