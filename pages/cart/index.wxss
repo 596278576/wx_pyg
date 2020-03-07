@@ -2,3 +2,119 @@
 .handleshdz{
   width: 60%;
 }
+.user{
+  height: 210rpx;
+  padding: 40rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 15px;
+}
+.username{
+  display: flex;
+  justify-content: space-between;
+}
+.tel{
+  display: flex;
+  align-items: center;
+}
+.tel::after{
+    display: block;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-left: 1px #999 solid;
+    border-top: 1px #999 solid;
+    transform: rotate(135deg);
+    margin-left:10px;
+}
+.fengexian{
+  height: 10rpx;
+  width: 100%;
+}
+.dianpu{
+  display: flex;
+  padding: 20rpx;
+  font-size: 15px;
+  border-top: 20rpx solid #eee;
+  border-bottom: 20rpx solid #eee;
+}
+
+.list-item{
+  font-size: 14px;
+  height: 200rpx;
+  padding: 20rpx;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list-item image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.list-item .detail{
+  height: 160rpx;
+  width: 470rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detail .title{
+  text-overflow: ellipsis;
+    display: -webkit-inline-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;cursor:pointer;
+}
+.list-item .detail .number{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.number-box{
+  display: flex;
+}
+.number-box input{
+  text-align: center;
+  width: 70rpx;
+}
+.price{
+  font-size: 16px;
+  color: red;
+}
+
+.red{
+  color: red;
+}
+.num{
+  border: 1px solid #ccc;
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer{
+  border-top: 1px solid #eee;
+  height: 100rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+}
+.footer .icon{
+  margin-left: 20rpx;
+}
+.footer .buy{
+  width: 230rpx;
+  background: #eb4450;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}

@@ -11,7 +11,8 @@
   </view>
 
   <view class="list">
-    <view class="list-box" wx:for='{{list}}' wx:key='index'>
+
+    <navigator url='/pages/goods_detail/index?goods_id={{item.goods_id}}' class="list-box" wx:for='{{list}}' wx:key='index'>
       <view class="list-left">
         <image src="{{item.goods_small_logo}}"></image>
       </view>
@@ -19,6 +20,6 @@
         <view class="title">{{item.goods_name}}</view>
         <view class="price">￥{{item.goods_price}}</view>
       </view>
-    </view>
+    </navigator>
   </view>
 </view>

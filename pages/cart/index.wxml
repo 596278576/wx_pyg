@@ -1,5 +1,47 @@
 <view>
-  <button type="primary" plain class="handleshdz" bindtap="handleshdz">
+  <button wx:if='{{!address.cityName}}' type="primary" plain class="handleshdz" bindtap="handleshdz">
     添加收货地址
   </button>
+  <view class="user" wx:if='{{address.cityName}}'>
+    <view class="username">
+      <view>收货人：{{address.userName}}</view>
+      <view class="tel">{{address.telNumber}}</view>
+    </view>
+    <view class="dizhi">
+      收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}}
+    </view>
+  </view>
+  <image class="fengexian" src="../../icon/cart_border@2x.png"></image>
+
+  <view class="dianpu">
+    <view class="iconfont icon-shoucang"></view>
+    <text>优购生活馆</text>
+  </view>
+
+  <view class="list">
+    <view class="list-item" wx:for='{{list}}' wx:key='index'>
+      <view data-index="{{index}}" bindtap="handelSelect" class="iconfont icon-xuanze {{item.select?'red':''}}"></view>
+      <image src="{{item.goods_small_logo}}"></image>
+      <view class="detail">
+        <navigator  url='/pages/goods_detail/index?goods_id={{item.goods_id}}'  class="title">{{item.goods_name}}</navigator>
+        <view class="number">
+          <view class="price">￥{{item.goods_price}}</view>
+          <view class="number-box">
+            <view class="num" data-index="{{index}}" data-num='{{-1}}' bindtap="handelNum">-</view>
+            <input type="number" bindblur="handelBlur" data-index="{{index}}" value="{{item.number}}"></input>
+            <view class="num" data-index="{{index}}" data-num='{{1}}'  bindtap="handelNum">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view bindtap="handelAllselect" class="iconfont icon-xuanze icon {{allSelect?'red':''}}">全选</view>
+    <view class="content">
+      <view class="allPrice">合计：<text class="red">{{allPrice}}</text></view>
+      <view class="yunfei">包含运费</view>
+    </view>
+    <view class="buy">结算</view>
+  </view>
 </view>

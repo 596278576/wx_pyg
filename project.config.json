@@ -83,6 +83,27 @@
 					"pathName": "pages/search/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "1",
+					"pathName": "pages/auth/index",
+					"query": "query=曲面电视",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "商品详情页",
+					"pathName": "pages/goods_detail/index",
+					"query": "goods_id=53947",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/cart/index",
+					"pathName": "pages/cart/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

@@ -1,2 +1,50 @@
-<!--pages/goods_detail/index.wxml-->
-<text>pages/goods_detail/index.wxml</text>
+<view>
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}">
+    <block wx:for="{{list.pics}}" wx:key="index">
+      <swiper-item>
+        <image bindtap='handelBig' data-index='{{index}}' src="{{item.pics_mid}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="price">￥{{list.goods_price}}</view>
+
+  <view class="goods_name">
+    <text class="name">{{list.goods_name}}</text>
+    <text class="iconfont icon-shoucang icon">收藏</text>
+  </view>
+
+  <view class="title">
+    <view class="title-text {{index===current?'active':''}}" wx:for='{{["商品详情","商品规格"]}}' wx:key='index' bindtap="handelTab" data-index='{{index}}'>{{item}}</view>
+  </view>
+
+  <rich-text wx:if='{{current===0}}' nodes='{{list.goods_introduce}}'></rich-text>
+
+  <view class="guige" wx:if='{{current===1}}'>
+    <view class="guige-item" wx:for='{{list.attrs}}' wx:key='index'>
+      <view>{{item.attr_name}}:</view>
+      <view>{{item.attr_vals}}</view>
+    </view>
+  </view>
+
+  <view class="bottom">
+    <view class="left">
+      <view class="iconfont icon-shoucang">
+        客服
+        <button open-type="contact">客服</button>
+      </view>
+      <view class="iconfont icon-shoucang">客服</view>
+
+      <navigator class="iconfont icon-shoucang" url='/pages/cart/index' open-type="switchTab">
+        购物车
+      </navigator>
+
+    </view>
+
+    <view class="right">
+      <view bindtap="handeladd" class="cart">加入购物车</view>
+      <view class="buy">立即购买</view>
+    </view>
+
+  </view>
+</view>
